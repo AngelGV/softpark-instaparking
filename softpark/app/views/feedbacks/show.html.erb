@@ -1,24 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Fec fedback:</strong>
-  <%= @feedback.fec_fedback %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @feedback.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @feedback.user %>
-</p>
-
-<p>
-  <strong>Reserve parking:</strong>
-  <%= @feedback.reserve_parking %>
-</p>
-
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
+<script>
+  window.location="../../trasaction/<%= @feedback.reserve_parking.rent_parking_id %>/detail"; 
+</script>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get      'trasaction/:id/list', controller: :trasaction, action: :list, as: :list
   get      'trasaction/:idparking/detail', controller: :trasaction, action: :detail, as: :detail
   
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get 'offert/create'

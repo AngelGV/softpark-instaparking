@@ -14,8 +14,19 @@
     <h2 class="media-heading">Precio : S/. <%= @rent_parking.price %>    por Hora </h2>
     <div class="jumbotron" style="padding:0px;margin:0px;">
          <%= link_to "Alquilar",trasaction_paiment_path , :class => "btn btn-primary btn-lg"%>
-         <%= link_to "Agregar Favorito", trasaction_favorite_path  , :class => "btn btn-primary btn-lg"%>
-         <%= link_to "Agregar Comentario", trasaction_detail_path   , :class => "btn btn-primary btn-lg"%>
+   
+   <%= simple_form_for(@favorite_parking) do |f| %>
+     
+       <div style="display: none;">
+        <%= f.input :name_space, input_html: { value: "registrado" }  %>
+        <%= f.input :user_id, input_html: { value: current_user.id }  %>
+        <%= f.input :rent_parking_id, input_html: { value: @rent_parking.id }  %>
+        <%= f.input :fec_favorite ,input_html: { value: Time.now } %>
+       </div>
+       <div class="form-actions">
+        <%= f.button :submit , :class => "btn btn-primary btn-lg" , :value => "Agregar Favorito"  %>
+       </div>
+  <% end %>
      </div>
   </div>
   <div>
@@ -26,59 +37,76 @@
  </div>
 </div>
 
+<%  @reserve_parking_id = ""  %>
+ <% @reserve_parkings.each do |reserve_parking| %>
+    <%  @reserve_parking_id = reserve_parking.id  %>
+<% end %>
 
+<% if @reserve_parking_id !="" %>
+<%= simple_form_for(@feedback) do |f| %>
 <div style="    padding-top: 50px;padding-left: 7%;padding-right: 20%;">
 <div class="media" >
-  <div class="media-left media-middle" style="width: 18%;display: inline-block;">
-    <label>Usuario1</label><br/>
-    <label>23/03/2016</label><br/>
+   <div class="media-left media-middle" style="width: 20%;display: inline-block;">
+    <label> <%= current_user.email %> </label><br/>
     <%= image_tag "estrellas.png", :class => "media-object" %>
   </div>
-  <div class="media-body" style="display: inline-block;width: 80%;">
-     <textbox>
-           El aparcamiento está convenientemente situado ya un precio razonable .
-           Está a sólo 10 minutos a pie de la Royal Opera House .
-      </textbox>
+   <div class="media-body" style="display: inline-block;width: 80%;">
+       
+       <%= f.input :description ,as: :text ,label: 'Comentario: ' ,input_html: { class: 'comentario' } %> 
+  </div>
+</div>
+<div style="display: none;">
+  
+      <%= f.input :user_id, input_html: { value: current_user.id }  %>
+      <%= f.input :reserve_parking_id, input_html: { value: @reserve_parking_id }  %>
+      <%= f.input :fec_fedback ,input_html: { value: Time.now } %>
       
+      <input type="text" name="rent_parking" value="<%= @rent_parking.id %>" >
      
-  </div>
+</div>
+  
+<div class="form-actions">
+    <%= f.button :submit , :class => "btn btn-primary btn-lg" ,:value => "Agregar Comentario"   %>
+</div> 
 </div>
 </div>
+<% end %>
+<% end %> 
+ 
+ 
+ 
+ 
+ 
+<% @feedbacks.each do |feedback| %>
 
 <div style="    padding-top: 50px;padding-left: 7%;padding-right: 20%;">
-<div class="media" >
+  <div class="media" >
   <div class="media-left media-middle" style="width: 18%;display: inline-block;">
-    <label>Usuario1</label><br/>
-    <label>23/03/2016</label><br/>
+    <label><%= current_user.email %></label><br/>
+    <label><%= feedback.fec_fedback %></label><br/>
     <%= image_tag "estrellas.png", :class => "media-object" %>
   </div>
   <div class="media-body" style="display: inline-block;width: 80%;">
-     <textbox>
-           El aparcamiento está convenientemente situado ya un precio razonable .
-           Está a sólo 10 minutos a pie de la Royal Opera House .
-      </textbox>
-     
+      <%= feedback.description %>
+  </div>
   </div>
 </div>
-</div>
+    
+<% end %>
+ 
 
-<div style="    padding-top: 50px;padding-left: 7%;padding-right: 20%;">
-<div class="media" >
-  <div class="media-left media-middle" style="width: 18%;display: inline-block;">
-    <label>Usuario1</label><br/>
-    <label>23/03/2016</label><br/>
-    <%= image_tag "estrellas.png", :class => "media-object" %>
-  </div>
-  <div class="media-body" style="display: inline-block;width: 80%;">
-     <textbox>
-           El aparcamiento está convenientemente situado ya un precio razonable .
-           Está a sólo 10 minutos a pie de la Royal Opera House .
-      </textbox>
-  </div>
-</div>
+
+
 
 <% end %>
 </div>
+
+<style>
+  .comentario{
+    width:100%; 
+    height: 79px;
+  }
+</style>
 
 
 

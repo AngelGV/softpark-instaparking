@@ -10,6 +10,7 @@ class FavoriteParkingsController < ApplicationController
   # GET /favorite_parkings/1
   # GET /favorite_parkings/1.json
   def show
+    
   end
 
   # GET /favorite_parkings/new
@@ -25,7 +26,7 @@ class FavoriteParkingsController < ApplicationController
   # POST /favorite_parkings.json
   def create
     @favorite_parking = FavoriteParking.new(favorite_parking_params)
-
+ 
     respond_to do |format|
       if @favorite_parking.save
         format.html { redirect_to @favorite_parking, notice: 'Favorite parking was successfully created.' }
