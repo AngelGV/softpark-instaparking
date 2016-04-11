@@ -11,6 +11,7 @@
   
    
     <select onchange="listar(this);">
+        <option value="0">Seleccionar Distrito</option>
          <% @locations.each do |location| %>
         <option value="<%= location.id %>"><%= location.desDistrict %></option>
         <% end %>
