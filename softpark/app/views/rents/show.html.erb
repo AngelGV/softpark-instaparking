@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @rent.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rent.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @rent.price %>
+</p>
+
+<p>
+  <strong>Addres:</strong>
+  <%= @rent.addres %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @rent.phone %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rent.user %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @rent.district %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @rent.type %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>

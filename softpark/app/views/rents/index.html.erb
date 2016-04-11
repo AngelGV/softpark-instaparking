@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Addres</th>
+      <th>Phone</th>
+      <th>User</th>
+      <th>District</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rents.each do |rent| %>
+      <tr>
+        <td> <%= image_tag rent.avatar.url(:thumb), class: "img-responsive" %></td>
+        <td><%= rent.title %></td>
+        <td><%= rent.description %></td>
+        <td><%= rent.price %></td>
+        <td><%= rent.addres %></td>
+        <td><%= rent.phone %></td>
+        <td><%= rent.user %></td>
+        <td><%= rent.district_name %></td>
+        <td><%= rent.type_name %></td>
+        <td><%= link_to 'Show', rent %></td>
+        <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
+        <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rent', new_rent_path %>

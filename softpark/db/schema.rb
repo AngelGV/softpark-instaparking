@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409233310) do
+ActiveRecord::Schema.define(version: 20160411140855) do
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "favorite_parkings", force: :cascade do |t|
     t.datetime "fec_favorite"
@@ -74,6 +80,27 @@ ActiveRecord::Schema.define(version: 20160409233310) do
   add_index "rent_parkings", ["type_parking_id"], name: "index_rent_parkings_on_type_parking_id", using: :btree
   add_index "rent_parkings", ["user_id"], name: "index_rent_parkings_on_user_id", using: :btree
 
+  create_table "rents", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.text     "description",         limit: 65535
+    t.float    "price",               limit: 24
+    t.string   "addres",              limit: 255
+    t.string   "phone",               limit: 255
+    t.integer  "user_id",             limit: 4
+    t.integer  "district_id",         limit: 4
+    t.integer  "type_id",             limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+  end
+
+  add_index "rents", ["district_id"], name: "index_rents_on_district_id", using: :btree
+  add_index "rents", ["type_id"], name: "index_rents_on_type_id", using: :btree
+  add_index "rents", ["user_id"], name: "index_rents_on_user_id", using: :btree
+
   create_table "reserve_parkings", force: :cascade do |t|
     t.datetime "fec_reserve"
     t.date     "fec_ini_reserve"
@@ -97,6 +124,13 @@ ActiveRecord::Schema.define(version: 20160409233310) do
     t.string   "state",       limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -126,6 +160,9 @@ ActiveRecord::Schema.define(version: 20160409233310) do
   add_foreign_key "rent_parkings", "locations"
   add_foreign_key "rent_parkings", "type_parkings"
   add_foreign_key "rent_parkings", "users"
+  add_foreign_key "rents", "districts"
+  add_foreign_key "rents", "types"
+  add_foreign_key "rents", "users"
   add_foreign_key "reserve_parkings", "rent_parkings"
   add_foreign_key "reserve_parkings", "users"
 end

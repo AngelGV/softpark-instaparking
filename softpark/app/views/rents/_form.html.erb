@@ -1,0 +1,24 @@
+<%= simple_form_for(@rent) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-inputs">
+    <%= image_tag @rent.avatar.url(:medium), class:"img-circle" %>
+
+    <%=f.input :avatar, as: :file %>
+    <%= f.input :description %>
+  </div>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :addres %>
+    <%= f.input :phone %>
+    <%= f.association :user %>
+    <%= f.association :district %>
+    <%= f.association :type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

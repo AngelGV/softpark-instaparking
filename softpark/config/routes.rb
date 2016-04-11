@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :rents
+  resources :districts
+  resources :types
   resources :feedbacks
   resources :favorite_parkings
   resources :reserve_parkings
@@ -47,7 +50,7 @@ Rails.application.routes.draw do
 
   get 'pages/contac'
   
-  root 'pages#index'
+  root 'rents#index'
   
   # Revisar lo que subio Walter, hay doble root
   #root 'home#index'
