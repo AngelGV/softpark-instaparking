@@ -1,1 +1,43 @@
 <p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Fecha Reservada:</strong>
+  <%= @reserve_parking.fec_ini_reserve %>
+</p>
+
+
+<p>
+  <strong>Hora Inicio:</strong>
+  <%= @reserve_parking.hor_ini_reserve %>
+</p>
+
+<p>
+  <strong>Hora FIN:</strong>
+  <%= @reserve_parking.hor_fin_reserve %>
+</p>
+
+<p>
+  <strong>Mont S/.:</strong>
+  <%= @reserve_parking.mont_reserve %>
+</p>
+
+<p>
+  <strong>Codigo Pago:</strong>
+  <%= @reserve_parking.cod_Pay %>
+</p>
+
+<p>
+  <strong>Stado:</strong>
+  <%= @reserve_parking.state %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reserve_parking.user.email %>
+</p>
+
+<p>
+  <strong>Rent parking:</strong>
+  <%= @reserve_parking.rent_parking.title %>
+</p>
