@@ -13,8 +13,8 @@
     <h2 class="media-heading"><%= @rent_parking.addres %> </h2>
     <h2 class="media-heading">Precio : S/. <%= @rent_parking.price %>    por Hora </h2>
     <div class="jumbotron" style="padding:0px;margin:0px;">
-         <%= link_to "Alquilar",trasaction_paiment_path , :class => "btn btn-primary btn-lg"%>
-   
+         
+         <a class="btn btn-primary btn-lg" href="../../trasaction/<%= @rent_parking.id %>/paiment" role="button">Alquilar</a>
    <%= simple_form_for(@favorite_parking) do |f| %>
      
        <div style="display: none;">

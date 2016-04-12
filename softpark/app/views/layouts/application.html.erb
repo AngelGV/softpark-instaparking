@@ -59,7 +59,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Registrar Ofertas", new_rent_parking_path(current_user) %></li>
               <li><%= link_to "Reservas Realizadas",offert_reservation_path   %></li>
-              <li><%= link_to "Ofertar creadas", rent_parkings_path %></li>
+              <li><a href="../../offert/<%= current_user.id %>/list" >ofertas creadas</a></li>
               <li class="divider"></li>
               <li><%= link_to "Historial", trasaction_histori_path  %></li>
               <li><%= link_to "Favoritos", trasaction_favorite_path  %></li>

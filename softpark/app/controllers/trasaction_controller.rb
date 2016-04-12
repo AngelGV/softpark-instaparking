@@ -27,6 +27,10 @@ class TrasactionController < ApplicationController
   end
 
   def paiment
+   @rent_parking=  RentParking.find(params[:idrent_parking]) 
+   @profile = Profile.find(current_user.id)
+   @reserve_parking = ReserveParking.new
+     
   end
 
   def confirmation
