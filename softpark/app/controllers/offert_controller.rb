@@ -3,6 +3,7 @@ class OffertController < ApplicationController
   end
 
   def list
+    @rent_parkings=  RentParking.where("user_id = ? " ,current_user.id)
   end
 
   def reservation

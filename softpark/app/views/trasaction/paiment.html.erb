@@ -3,13 +3,58 @@
       Registrar Pago
   </div>
   
+<%= simple_form_for(@reserve_parking) do |f| %> 
+<!--%= form_for([@reserve_parking] , :html => { :class => "form-horizontal", :multipart => true}) do |f| %-->
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    
+    <%= f.input :fec_ini_reserve %>
+    <%= f.input :fec_fin_reserv %>
+    <span>Hora Inicio:</span>
+    <%= f.select  :hor_ini_reserve , options_for_select([[8, 8], [9, 9] , [10, 10], [11, 11],[12, 12] ,[13, 13] ,[14, 14] ,[15, 15] ,[16, 16] ,[17, 17] ,[18, 18] ,[19, 19] ,[20, 20] ,[21, 21] ,[22, 22] ,[23, 23] , [24, 24]])  %>
+    <span>Hora Fin:</span>
+    <%= f.select :hor_fin_reserve  , options_for_select([[8, 8], [9, 9] , [10, 10], [11, 11],[12, 12] ,[13, 13] ,[14, 14] ,[15, 15] ,[16, 16] ,[17, 17] ,[18, 18] ,[19, 19] ,[20, 20] ,[21, 21] ,[22, 22] ,[23, 23] , [24, 24]])  %>
+    
+    <div style="display:none;">
+       <%= f.input :mont_reserve %>
+       <%= f.input :cod_Pay %>
+       <%= f.input :rent_parking_id , input_html: { value:  @rent_parking.id }  %>
+       <%= f.input :user_id , input_html: { value:  @current_user.id }  %>
+    
+    </div>
+  </div>
+
+  <div class="form-actions">
+   <input type="submit" onclick="return validar();" value="Registrar">
+    
+  </div>
+<% end %>
+  
+  <script>
+    function validar(){
+     var  precio=<%= @rent_parking.price%>;
+     var  horainicio= $("#reserve_parking_hor_ini_reserve").val();
+     var  horafin= $("#reserve_parking_hor_ini_reserve").val();
+     
+     var diferencia=horafin- horainicio;
+     $("#reserve_parking_mont_reserve").val()=precio*diferencia;
+     $("#reserve_parking_cod_Pay").val()="1234-125-125";
+     return true;
+    }
+   
+  </script>
+  
+  
+  
+  
   <div style="    padding-top: 15px;padding-left: 20%;margin: auto;padding-right: 20%;">
      <table class="table_register">
          <tr>
              <td>
                 <div class="input-group">
                  <span class="input-group-addon" id="basic-addon1">Usuario          : </span>
-                 <label class="form-control">Ricardo Miguel Quispe Quispe
+                 <label class="form-control">
                  </div>
              </td>
              <td style="width:20px;"></td>
